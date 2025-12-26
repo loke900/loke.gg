@@ -1,5 +1,5 @@
 # Download
-Download the direct file [HERE](link)
+Download the direct file [HERE](https://github.com/loke900/loke.gg/tree/main) Soon...
 
 ## Information
 soon
