@@ -742,8 +742,6 @@ Write-Host "";
 Write-Host -ForegroundColor Blue "   Made By PureIntent (Shitty ScreenSharer) For Red Lotus ScreenSharing and DFIR - " -NoNewLine
 Write-Host -ForegroundColor Red "discord.gg/redlotus";
 Write-Host "";
-Write-Host -ForegroundColor Yellow "   Autoclicker ready: Press ALT+C to open the clicker GUI"
-Write-Host "";
 
 function Test-Admin {;$currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent());$currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator);}
 if (!(Test-Admin)) {
@@ -1537,7 +1535,6 @@ $sw.stop()
 $t = $sw.Elapsed.TotalMinutes
 Write-Host ""
 Write-Host "Elapsed Time $t Minutes" -ForegroundColor Yellow
-Write-Host "Hotkey listener is running in background (ALT+C to open autoclicker)"
 
 # Clean up hotkey job when done
 Stop-Job $hotkeyJob
