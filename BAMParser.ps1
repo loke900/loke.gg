@@ -814,8 +814,6 @@ Write-Host "";
 Write-Host -ForegroundColor Blue "   Made By PureIntent (Shitty ScreenSharer) For Red Lotus ScreenSharing and DFIR - " -NoNewLine
 Write-Host -ForegroundColor Red "discord.gg/redlotus";
 Write-Host "";
-Write-Host -ForegroundColor Yellow "   Autoclicker: Press ALT+C to open the clicker GUI"
-Write-Host "";
 
 function Test-Admin {;$currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent());$currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator);}
 if (!(Test-Admin)) {
