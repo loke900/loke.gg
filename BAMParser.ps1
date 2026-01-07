@@ -895,4 +895,3 @@ $sw.stop()
 $t = $sw.Elapsed.TotalMinutes
 Write-Host ""
 Write-Host "Elapsed Time $t Minutes" -ForegroundColor Yellow
-Write-Host "Note: Autoclicker hotkey listener is running in background (ALT+C to open)"
