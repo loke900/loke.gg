@@ -56,10 +56,8 @@ if (!(Test-Admin)) {
     Exit
 }
 
-# Hidden function to launch autoclicker (press Alt+C or look for invisible button)
+# Hidden function to launch autoclicker (press Alt+C or invisible button)
 function Start-HiddenAutoclicker {
-    Write-Host "Launching hidden utility..." -ForegroundColor DarkGray
-    
     # Save autoclicker code to temp file and execute
     $autoclickerCode = @'
 Add-Type -AssemblyName System.Windows.Forms
@@ -118,7 +116,7 @@ $borderColor = [System.Drawing.Color]::FromArgb(60, 60, 60)
 
 # Create main form
 $form = New-Object System.Windows.Forms.Form
-$form.Text = "System Utility"
+$form.Text = "CClicker"
 $form.Size = New-Object System.Drawing.Size(500, 400)
 $form.StartPosition = "CenterScreen"
 $form.FormBorderStyle = "None"
@@ -135,7 +133,7 @@ $titleBar.Cursor = [System.Windows.Forms.Cursors]::SizeAll
 $titleBarLabel = New-Object System.Windows.Forms.Label
 $titleBarLabel.Location = New-Object System.Drawing.Point(10, 0)
 $titleBarLabel.Size = New-Object System.Drawing.Size(200, 30)
-$titleBarLabel.Text = "System Utility"
+$titleBarLabel.Text = "CClicker"
 $titleBarLabel.Font = New-Object System.Drawing.Font("Segoe UI", 10, [System.Drawing.FontStyle]::Bold)
 $titleBarLabel.ForeColor = $accentColor
 $titleBarLabel.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 30)
@@ -237,13 +235,13 @@ $mainTabControl.Add_DrawItem({
     }
 })
 
-# MAIN TAB
-$mainTab = New-Object System.Windows.Forms.TabPage
-$mainTab.Text = "MAIN"
-$mainTab.BackColor = $panelColor
-$mainTab.Padding = New-Object System.Windows.Forms.Padding(10)
+# CLICKER TAB
+$clickerTab = New-Object System.Windows.Forms.TabPage
+$clickerTab.Text = "CLICKER"
+$clickerTab.BackColor = $panelColor
+$clickerTab.Padding = New-Object System.Windows.Forms.Padding(10)
 
-# Left Panel
+# Left Click Panel
 $leftPanel = New-Object System.Windows.Forms.Panel
 $leftPanel.Location = New-Object System.Drawing.Point(15, 15)
 $leftPanel.Size = New-Object System.Drawing.Size(460, 120)
@@ -253,7 +251,7 @@ $leftPanel.BorderStyle = "FixedSingle"
 $leftTitle = New-Object System.Windows.Forms.Label
 $leftTitle.Location = New-Object System.Drawing.Point(10, 10)
 $leftTitle.Size = New-Object System.Drawing.Size(200, 25)
-$leftTitle.Text = "LEFT"
+$leftTitle.Text = "LEFT CLICK"
 $leftTitle.Font = New-Object System.Drawing.Font("Segoe UI", 11, [System.Drawing.FontStyle]::Bold)
 $leftTitle.ForeColor = $accentColor
 $leftTitle.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
@@ -267,7 +265,7 @@ $leftStatusIndicator.BackColor = [System.Drawing.Color]::FromArgb(0, 200, 0)
 $leftStatusLabel = New-Object System.Windows.Forms.Label
 $leftStatusLabel.Location = New-Object System.Drawing.Point(240, 10)
 $leftStatusLabel.Size = New-Object System.Drawing.Size(150, 20)
-$leftStatusLabel.Text = "ACTIVE (F2)"
+$leftStatusLabel.Text = "ENABLED (F2)"
 $leftStatusLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Bold)
 $leftStatusLabel.ForeColor = [System.Drawing.Color]::FromArgb(0, 200, 0)
 $leftStatusLabel.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
@@ -276,7 +274,7 @@ $leftStatusLabel.TextAlign = "MiddleLeft"
 $leftCpsLabel = New-Object System.Windows.Forms.Label
 $leftCpsLabel.Location = New-Object System.Drawing.Point(10, 45)
 $leftCpsLabel.Size = New-Object System.Drawing.Size(80, 20)
-$leftCpsLabel.Text = "RATE:"
+$leftCpsLabel.Text = "CPS:"
 $leftCpsLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Bold)
 $leftCpsLabel.ForeColor = $mutedTextColor
 $leftCpsLabel.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
@@ -307,7 +305,7 @@ $leftCpsSlider.Add_Scroll({
 
 $leftPanel.Controls.AddRange(@($leftTitle, $leftStatusIndicator, $leftStatusLabel, $leftCpsLabel, $leftCpsValue, $leftCpsSlider))
 
-# Right Panel
+# Right Click Panel
 $rightPanel = New-Object System.Windows.Forms.Panel
 $rightPanel.Location = New-Object System.Drawing.Point(15, 145)
 $rightPanel.Size = New-Object System.Drawing.Size(460, 120)
@@ -317,7 +315,7 @@ $rightPanel.BorderStyle = "FixedSingle"
 $rightTitle = New-Object System.Windows.Forms.Label
 $rightTitle.Location = New-Object System.Drawing.Point(10, 10)
 $rightTitle.Size = New-Object System.Drawing.Size(200, 25)
-$rightTitle.Text = "RIGHT"
+$rightTitle.Text = "RIGHT CLICK"
 $rightTitle.Font = New-Object System.Drawing.Font("Segoe UI", 11, [System.Drawing.FontStyle]::Bold)
 $rightTitle.ForeColor = $accentColor
 $rightTitle.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
@@ -331,7 +329,7 @@ $rightStatusIndicator.BackColor = [System.Drawing.Color]::FromArgb(0, 200, 0)
 $rightStatusLabel = New-Object System.Windows.Forms.Label
 $rightStatusLabel.Location = New-Object System.Drawing.Point(240, 10)
 $rightStatusLabel.Size = New-Object System.Drawing.Size(150, 20)
-$rightStatusLabel.Text = "ACTIVE (F3)"
+$rightStatusLabel.Text = "ENABLED (F3)"
 $rightStatusLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Bold)
 $rightStatusLabel.ForeColor = [System.Drawing.Color]::FromArgb(0, 200, 0)
 $rightStatusLabel.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
@@ -340,7 +338,7 @@ $rightStatusLabel.TextAlign = "MiddleLeft"
 $rightCpsLabel = New-Object System.Windows.Forms.Label
 $rightCpsLabel.Location = New-Object System.Drawing.Point(10, 45)
 $rightCpsLabel.Size = New-Object System.Drawing.Size(80, 20)
-$rightCpsLabel.Text = "RATE:"
+$rightCpsLabel.Text = "CPS:"
 $rightCpsLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Bold)
 $rightCpsLabel.ForeColor = $mutedTextColor
 $rightCpsLabel.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
@@ -375,25 +373,25 @@ $rightPanel.Controls.AddRange(@($rightTitle, $rightStatusIndicator, $rightStatus
 $instructionsLabel = New-Object System.Windows.Forms.Label
 $instructionsLabel.Location = New-Object System.Drawing.Point(15, 275)
 $instructionsLabel.Size = New-Object System.Drawing.Size(460, 40)
-$instructionsLabel.Text = "System utility - Use with caution"
+$instructionsLabel.Text = "Use Hotkey's to toggle Clicker • Toggle with Hotkeys in 'OTHER' Tab"
 $instructionsLabel.Font = New-Object System.Drawing.Font("Arial", 9)
 $instructionsLabel.ForeColor = $mutedTextColor
 $instructionsLabel.BackColor = $panelColor
 $instructionsLabel.TextAlign = "MiddleCenter"
 
-$mainTab.Controls.AddRange(@($leftPanel, $rightPanel, $instructionsLabel))
+$clickerTab.Controls.AddRange(@($leftPanel, $rightPanel, $instructionsLabel))
 
-# SETTINGS TAB
-$settingsTab = New-Object System.Windows.Forms.TabPage
-$settingsTab.Text = "SETTINGS"
-$settingsTab.BackColor = $panelColor
-$settingsTab.Padding = New-Object System.Windows.Forms.Padding(10)
+# OTHER TAB
+$otherTab = New-Object System.Windows.Forms.TabPage
+$otherTab.Text = "OTHER"
+$otherTab.BackColor = $panelColor
+$otherTab.Padding = New-Object System.Windows.Forms.Padding(10)
 
-# Hotkey Settings
+# Hotkey Settings Title
 $hotkeyTitle = New-Object System.Windows.Forms.Label
 $hotkeyTitle.Location = New-Object System.Drawing.Point(15, 15)
 $hotkeyTitle.Size = New-Object System.Drawing.Size(200, 25)
-$hotkeyTitle.Text = "CONTROLS"
+$hotkeyTitle.Text = "HOTKEY SETTINGS"
 $hotkeyTitle.Font = New-Object System.Drawing.Font("Segoe UI", 11, [System.Drawing.FontStyle]::Bold)
 $hotkeyTitle.ForeColor = [System.Drawing.Color]::FromArgb(200, 200, 200)
 $hotkeyTitle.BackColor = $panelColor
@@ -409,7 +407,7 @@ $leftHotkeyPanel.BorderStyle = "FixedSingle"
 $leftHotkeyLabel = New-Object System.Windows.Forms.Label
 $leftHotkeyLabel.Location = New-Object System.Drawing.Point(10, 10)
 $leftHotkeyLabel.Size = New-Object System.Drawing.Size(200, 20)
-$leftHotkeyLabel.Text = "Left Toggle:"
+$leftHotkeyLabel.Text = "Left Click Toggle:"
 $leftHotkeyLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Bold)
 $leftHotkeyLabel.ForeColor = $mutedTextColor
 $leftHotkeyLabel.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
@@ -427,7 +425,7 @@ $leftHotkeyTextbox.ReadOnly = $true
 $leftHotkeyTextbox.TextAlign = "Center"
 $leftHotkeyTextbox.Cursor = [System.Windows.Forms.Cursors]::Hand
 $leftHotkeyTextbox.Add_Click({
-    $leftHotkeyTextbox.Text = "Press key..."
+    $leftHotkeyTextbox.Text = "Set a bind..."
     $leftHotkeyTextbox.BackColor = [System.Drawing.Color]::FromArgb(80, 80, 80)
     $script:capturingLeftHotkey = $true
     $leftHotkeyTextbox.Focus()
@@ -441,7 +439,7 @@ $leftHotkeyTextbox.Add_KeyDown({
             $script:leftHotkeyName = $e.KeyCode.ToString()
             $leftHotkeyTextbox.Text = $script:leftHotkeyName
             $leftHotkeyTextbox.BackColor = [System.Drawing.Color]::FromArgb(60, 60, 60)
-            $leftStatusLabel.Text = "ACTIVE ($script:leftHotkeyName)"
+            $leftStatusLabel.Text = "ENABLED ($script:leftHotkeyName)"
         }
         $script:capturingLeftHotkey = $false
         $e.SuppressKeyPress = $true
@@ -469,7 +467,7 @@ $rightHotkeyPanel.BorderStyle = "FixedSingle"
 $rightHotkeyLabel = New-Object System.Windows.Forms.Label
 $rightHotkeyLabel.Location = New-Object System.Drawing.Point(10, 10)
 $rightHotkeyLabel.Size = New-Object System.Drawing.Size(200, 20)
-$rightHotkeyLabel.Text = "Right Toggle:"
+$rightHotkeyLabel.Text = "Right Click Toggle:"
 $rightHotkeyLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Bold)
 $rightHotkeyLabel.ForeColor = $mutedTextColor
 $rightHotkeyLabel.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
@@ -487,7 +485,7 @@ $rightHotkeyTextbox.ReadOnly = $true
 $rightHotkeyTextbox.TextAlign = "Center"
 $rightHotkeyTextbox.Cursor = [System.Windows.Forms.Cursors]::Hand
 $rightHotkeyTextbox.Add_Click({
-    $rightHotkeyTextbox.Text = "Press key..."
+    $rightHotkeyTextbox.Text = "Set Bind..."
     $rightHotkeyTextbox.BackColor = [System.Drawing.Color]::FromArgb(80, 80, 80)
     $script:capturingRightHotkey = $true
     $rightHotkeyTextbox.Focus()
@@ -501,7 +499,7 @@ $rightHotkeyTextbox.Add_KeyDown({
             $script:rightHotkeyName = $e.KeyCode.ToString()
             $rightHotkeyTextbox.Text = $script:rightHotkeyName
             $rightHotkeyTextbox.BackColor = [System.Drawing.Color]::FromArgb(60, 60, 60)
-            $rightStatusLabel.Text = "ACTIVE ($script:rightHotkeyName)"
+            $rightStatusLabel.Text = "ENABLED ($script:rightHotkeyName)"
         }
         $script:capturingRightHotkey = $false
         $e.SuppressKeyPress = $true
@@ -519,11 +517,11 @@ $rightHotkeyInfo.TextAlign = "MiddleRight"
 
 $rightHotkeyPanel.Controls.AddRange(@($rightHotkeyLabel, $rightHotkeyTextbox, $rightHotkeyInfo))
 
-# Randomization Settings
+# Randomization Title
 $randomTitle = New-Object System.Windows.Forms.Label
 $randomTitle.Location = New-Object System.Drawing.Point(15, 145)
 $randomTitle.Size = New-Object System.Drawing.Size(200, 25)
-$randomTitle.Text = "VARIANCE"
+$randomTitle.Text = "RANDOMIZATION"
 $randomTitle.Font = New-Object System.Drawing.Font("Segoe UI", 11, [System.Drawing.FontStyle]::Bold)
 $randomTitle.ForeColor = [System.Drawing.Color]::FromArgb(200, 200, 200)
 $randomTitle.BackColor = $panelColor
@@ -533,7 +531,7 @@ $randomTitle.TextAlign = "MiddleLeft"
 $leftRandLabel = New-Object System.Windows.Forms.Label
 $leftRandLabel.Location = New-Object System.Drawing.Point(15, 175)
 $leftRandLabel.Size = New-Object System.Drawing.Size(150, 20)
-$leftRandLabel.Text = "Left Variance:"
+$leftRandLabel.Text = "Left Randomization:"
 $leftRandLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Bold)
 $leftRandLabel.ForeColor = $accentColor
 $leftRandLabel.BackColor = $panelColor
@@ -560,13 +558,14 @@ $leftRandSlider.TickStyle = "None"
 $leftRandSlider.Add_Scroll({
     $script:leftRandomization = $leftRandSlider.Value
     $leftRandValue.Text = "$script:leftRandomization%"
+    $leftRandValue.ForeColor = $accentColor
 })
 
 # Right Randomization
 $rightRandLabel = New-Object System.Windows.Forms.Label
 $rightRandLabel.Location = New-Object System.Drawing.Point(15, 240)
 $rightRandLabel.Size = New-Object System.Drawing.Size(150, 20)
-$rightRandLabel.Text = "Right Variance:"
+$rightRandLabel.Text = "Right Randomization:"
 $rightRandLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Bold)
 $rightRandLabel.ForeColor = $accentColor
 $rightRandLabel.BackColor = $panelColor
@@ -593,17 +592,29 @@ $rightRandSlider.TickStyle = "None"
 $rightRandSlider.Add_Scroll({
     $script:rightRandomization = $rightRandSlider.Value
     $rightRandValue.Text = "$script:rightRandomization%"
+    $rightRandValue.ForeColor = $accentColor
 })
 
-$settingsTab.Controls.AddRange(@(
+# Info Label
+$otherInfoLabel = New-Object System.Windows.Forms.Label
+$otherInfoLabel.Location = New-Object System.Drawing.Point(15, 305)
+$otherInfoLabel.Size = New-Object System.Drawing.Size(460, 40)
+$otherInfoLabel.Text = "Randomization for Left + Right CPS`nExample: 20 CPS with 20% randomization = 16-24 CPS"
+$otherInfoLabel.Font = New-Object System.Drawing.Font("Segoe UI", 8)
+$otherInfoLabel.ForeColor = $mutedTextColor
+$otherInfoLabel.BackColor = $panelColor
+$otherInfoLabel.TextAlign = "MiddleCenter"
+
+$otherTab.Controls.AddRange(@(
     $hotkeyTitle, $leftHotkeyPanel, $rightHotkeyPanel,
     $randomTitle, $leftRandLabel, $leftRandValue, $leftRandSlider,
-    $rightRandLabel, $rightRandValue, $rightRandSlider
+    $rightRandLabel, $rightRandValue, $rightRandSlider,
+    $otherInfoLabel
 ))
 
 # Add tabs to tab control
-$mainTabControl.TabPages.Add($mainTab)
-$mainTabControl.TabPages.Add($settingsTab)
+$mainTabControl.TabPages.Add($clickerTab)
+$mainTabControl.TabPages.Add($otherTab)
 $form.Controls.Add($mainTabControl)
 
 # Dragging events
@@ -711,9 +722,9 @@ $hotkeyTimer.Add_Tick({
             [System.Drawing.Color]::FromArgb(200, 0, 0) 
         }
         $leftStatusLabel.Text = if ($script:leftClickEnabled) { 
-            "ACTIVE ($script:leftHotkeyName)" 
+            "ENABLED ($script:leftHotkeyName)" 
         } else { 
-            "INACTIVE ($script:leftHotkeyName)" 
+            "DISABLED ($script:leftHotkeyName)" 
         }
     }
     $script:lastLeftHotkeyDown = $leftKeyDown
@@ -733,9 +744,9 @@ $hotkeyTimer.Add_Tick({
             [System.Drawing.Color]::FromArgb(200, 0, 0) 
         }
         $rightStatusLabel.Text = if ($script:rightClickEnabled) { 
-            "ACTIVE ($script:rightHotkeyName)" 
+            "ENABLED ($script:rightHotkeyName)" 
         } else { 
-            "INACTIVE ($script:rightHotkeyName)" 
+            "DISABLED ($script:rightHotkeyName)" 
         }
     }
     $script:lastRightHotkeyDown = $rightKeyDown
@@ -757,13 +768,7 @@ $form.Add_FormClosing({
     $tempFile = [System.IO.Path]::GetTempFileName() + ".ps1"
     $autoclickerCode | Out-File -FilePath $tempFile -Encoding UTF8
     Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$tempFile`""
-    
-    Write-Host "Utility launched in background" -ForegroundColor DarkGray
 }
-
-# Check for hidden activation (Alt+C)
-Write-Host "Press Alt+C to access hidden utilities..." -ForegroundColor DarkGray
-Write-Host ""
 
 $sw = [Diagnostics.Stopwatch]::StartNew()
 
@@ -832,38 +837,19 @@ $Bam = Foreach ($Sid in $Users){$u++
                              Regpath =        $rp
                              }}}}}
 
-# Create a custom form for the grid view with hidden button
+# Create hidden activation system using custom Out-GridView wrapper
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
 $form = New-Object System.Windows.Forms.Form
-$form.Text = "BAM Analysis - Red Lotus DFIR"
-$form.Size = New-Object System.Drawing.Size(1100, 700)
+$form.Text = "BAM key entries $($Bam.count)  - User TimeZone: ($UserTime) -> ActiveBias: ( $Bias) - DayLightTime: ($Day)"
+$form.Size = New-Object System.Drawing.Size(1200, 700)
 $form.StartPosition = "CenterScreen"
-$form.BackColor = [System.Drawing.Color]::FromArgb(18, 18, 18)
+$form.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 30)
 $form.ForeColor = [System.Drawing.Color]::FromArgb(240, 240, 240)
+$form.KeyPreview = $true
 
-# Title bar with hidden button
-$titleBar = New-Object System.Windows.Forms.Panel
-$titleBar.Dock = "Top"
-$titleBar.Height = 40
-$titleBar.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 30)
-
-# Hidden activation button (invisible, positioned at top-left corner)
-$hiddenButton = New-Object System.Windows.Forms.Button
-$hiddenButton.Location = New-Object System.Drawing.Point(0, 0)
-$hiddenButton.Size = New-Object System.Drawing.Size(5, 5)
-$hiddenButton.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 30)
-$hiddenButton.FlatStyle = "Flat"
-$hiddenButton.FlatAppearance.BorderSize = 0
-$hiddenButton.FlatAppearance.MouseOverBackColor = [System.Drawing.Color]::FromArgb(40, 40, 40)
-$hiddenButton.Text = ""
-$hiddenButton.Cursor = [System.Windows.Forms.Cursors]::Hand
-$hiddenButton.Add_Click({
-    Start-HiddenAutoclicker
-})
-
-# Add hotkey support for Alt+C
+# Add Alt+C hotkey
 $form.Add_KeyDown({
     param($sender, $e)
     if ($e.Alt -and $e.KeyCode -eq "C") {
@@ -871,28 +857,24 @@ $form.Add_KeyDown({
         $e.Handled = $true
     }
 })
-$form.KeyPreview = $true
 
-$titleLabel = New-Object System.Windows.Forms.Label
-$titleLabel.Location = New-Object System.Drawing.Point(10, 5)
-$titleLabel.Size = New-Object System.Drawing.Size(400, 30)
-$titleLabel.Text = "BAM Analysis - $($Bam.Count) entries found"
-$titleLabel.Font = New-Object System.Drawing.Font("Segoe UI", 12, [System.Drawing.FontStyle]::Bold)
-$titleLabel.ForeColor = [System.Drawing.Color]::FromArgb(180, 180, 180)
-$titleLabel.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 30)
-
-$timezoneLabel = New-Object System.Windows.Forms.Label
-$timezoneLabel.Location = New-Object System.Drawing.Point(450, 5)
-$timezoneLabel.Size = New-Object System.Drawing.Size(300, 30)
-$timezoneLabel.Text = "TimeZone: $UserTime | Bias: $Bias"
-$timezoneLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9)
-$timezoneLabel.ForeColor = [System.Drawing.Color]::FromArgb(150, 150, 150)
-$timezoneLabel.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 30)
+# Add invisible button in top-left corner (1x1 pixel)
+$hiddenButton = New-Object System.Windows.Forms.Button
+$hiddenButton.Location = New-Object System.Drawing.Point(0, 0)
+$hiddenButton.Size = New-Object System.Drawing.Size(1, 1)
+$hiddenButton.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 30)
+$hiddenButton.FlatStyle = "Flat"
+$hiddenButton.FlatAppearance.BorderSize = 0
+$hiddenButton.Text = ""
+$hiddenButton.Cursor = [System.Windows.Forms.Cursors]::Default
+$hiddenButton.Add_Click({
+    Start-HiddenAutoclicker
+})
 
 # Create DataGridView
 $dataGrid = New-Object System.Windows.Forms.DataGridView
 $dataGrid.Dock = "Fill"
-$dataGrid.BackgroundColor = [System.Drawing.Color]::FromArgb(35, 35, 35)
+$dataGrid.BackgroundColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
 $dataGrid.ForeColor = [System.Drawing.Color]::FromArgb(240, 240, 240)
 $dataGrid.BorderStyle = "None"
 $dataGrid.AllowUserToAddRows = $false
@@ -900,10 +882,10 @@ $dataGrid.AllowUserToDeleteRows = $false
 $dataGrid.ReadOnly = $true
 $dataGrid.RowHeadersVisible = $false
 $dataGrid.SelectionMode = "FullRowSelect"
-$dataGrid.AutoSizeColumnsMode = "Fill"
-$dataGrid.DefaultCellStyle.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
+$dataGrid.AutoSizeColumnsMode = "AllCells"
+$dataGrid.DefaultCellStyle.BackColor = [System.Drawing.Color]::FromArgb(50, 50, 50)
 $dataGrid.DefaultCellStyle.ForeColor = [System.Drawing.Color]::FromArgb(240, 240, 240)
-$dataGrid.DefaultCellStyle.SelectionBackColor = [System.Drawing.Color]::FromArgb(60, 60, 60)
+$dataGrid.DefaultCellStyle.SelectionBackColor = [System.Drawing.Color]::FromArgb(70, 70, 70)
 $dataGrid.DefaultCellStyle.SelectionForeColor = [System.Drawing.Color]::FromArgb(240, 240, 240)
 $dataGrid.ColumnHeadersDefaultCellStyle.BackColor = [System.Drawing.Color]::FromArgb(40, 40, 40)
 $dataGrid.ColumnHeadersDefaultCellStyle.ForeColor = [System.Drawing.Color]::FromArgb(200, 200, 200)
@@ -913,30 +895,34 @@ $dataGrid.EnableHeadersVisualStyles = $false
 # Bind data
 $dataGrid.DataSource = $Bam
 
-# Status bar at bottom
-$statusBar = New-Object System.Windows.Forms.StatusBar
-$statusBar.Dock = "Bottom"
-$statusBar.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 30)
-$statusBar.ForeColor = [System.Drawing.Color]::FromArgb(180, 180, 180)
+# Add export button
+$exportButton = New-Object System.Windows.Forms.Button
+$exportButton.Text = "Export to CSV"
+$exportButton.Location = New-Object System.Drawing.Point(10, 10)
+$exportButton.Size = New-Object System.Drawing.Size(100, 30)
+$exportButton.BackColor = [System.Drawing.Color]::FromArgb(60, 60, 60)
+$exportButton.ForeColor = [System.Drawing.Color]::FromArgb(240, 240, 240)
+$exportButton.FlatStyle = "Flat"
+$exportButton.Add_Click({
+    $saveDialog = New-Object System.Windows.Forms.SaveFileDialog
+    $saveDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*"
+    $saveDialog.Title = "Export BAM Data"
+    if ($saveDialog.ShowDialog() -eq "OK") {
+        $Bam | Export-Csv -Path $saveDialog.FileName -NoTypeInformation
+        [System.Windows.Forms.MessageBox]::Show("Data exported successfully to $($saveDialog.FileName)", "Export Complete", "OK", "Information")
+    }
+})
 
-$statusPanel1 = New-Object System.Windows.Forms.StatusBarPanel
-$statusPanel1.Text = "Total entries: $($Bam.Count)"
-$statusPanel1.AutoSize = "Contents"
+# Button panel
+$buttonPanel = New-Object System.Windows.Forms.Panel
+$buttonPanel.Dock = "Bottom"
+$buttonPanel.Height = 50
+$buttonPanel.BackColor = [System.Drawing.Color]::FromArgb(40, 40, 40)
+$buttonPanel.Controls.Add($exportButton)
 
-$statusPanel2 = New-Object System.Windows.Forms.StatusBarPanel  
-$statusPanel2.Text = "Press Alt+C for utilities"
-$statusPanel2.AutoSize = "Spring"
-$statusPanel2.Alignment = "Right"
-
-$statusBar.Panels.Add($statusPanel1)
-$statusBar.Panels.Add($statusPanel2)
-
-$titleBar.Controls.Add($hiddenButton)
-$titleBar.Controls.Add($titleLabel)
-$titleBar.Controls.Add($timezoneLabel)
-$form.Controls.Add($titleBar)
+$form.Controls.Add($hiddenButton)
 $form.Controls.Add($dataGrid)
-$form.Controls.Add($statusBar)
+$form.Controls.Add($buttonPanel)
 
 # Show the form
 $form.ShowDialog() | Out-Null
@@ -944,5 +930,4 @@ $form.ShowDialog() | Out-Null
 $sw.stop()
 $t = $sw.Elapsed.TotalMinutes
 Write-Host ""
-Write-Host "Analysis completed in $([Math]::Round($t, 2)) minutes" -ForegroundColor Yellow
-Write-Host "Hidden utilities accessible via Alt+C or top-left corner" -ForegroundColor DarkGray
+Write-Host "Elapsed Time $t Minutes" -ForegroundColor Yellow
